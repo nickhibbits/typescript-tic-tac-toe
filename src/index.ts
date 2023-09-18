@@ -1,6 +1,3 @@
-import "./style.css";
-//
-
 const appElement = document.getElementById("app");
 const boardElement = document.getElementById("board");
 const ROW_COUNT = 3;
