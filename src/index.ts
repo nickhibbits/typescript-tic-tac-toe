@@ -1,4 +1,5 @@
 import "./style.css";
+//
 
 const appElement = document.getElementById("app");
 const boardElement = document.getElementById("board");
@@ -8,7 +9,7 @@ const COL_COUNT = 3;
 let boardState = [
   ["", "", ""],
   ["", "", ""],
-  ["", "", ""]
+  ["", "", ""],
 ];
 let currentMove = "X";
 
@@ -48,7 +49,7 @@ function init() {
     boardState = [
       ["", "", ""],
       ["", "", ""],
-      ["", "", ""]
+      ["", "", ""],
     ];
     currentMove = "X";
     renderBoard();
