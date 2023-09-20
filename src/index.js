@@ -21,7 +21,8 @@ function createCell(row, col, content) {
             return;
         if (boardState[row][col] === "") {
             boardState[row][col] = currentMove;
-            currentMove = "X" ? "O" : "X";
+            currentMove = currentMove === "X" ? "O" : "X";
+            console.log(currentMove);
             winner = checkBoard();
             renderBoard();
         }
@@ -108,7 +109,9 @@ function renderBoard() {
     }
     var moveElement = document.createElement("p");
     moveElement.id = "move-element";
-    moveElement.innerText = "Next Move: ".concat(currentMove);
+    moveElement.innerText = winner
+        ? "Winner: ".concat(winner)
+        : "Next Move: ".concat(currentMove);
     moveElement.classList.add("current-move");
     appElement.insertBefore(moveElement, document.getElementById("reset"));
 }
@@ -123,6 +126,7 @@ function init() {
             ["", "", ""],
         ];
         currentMove = "X";
+        winner = "";
         renderBoard();
     });
     renderBoard();

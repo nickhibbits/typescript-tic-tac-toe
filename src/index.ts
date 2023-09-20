@@ -28,7 +28,8 @@ function createCell(row: number, col: number, content: Cell = "") {
     if (winner) return;
     if (boardState[row][col] === "") {
       boardState[row][col] = currentMove;
-      currentMove = "X" ? "O" : "X";
+      currentMove = currentMove === "X" ? "O" : "X";
+      console.log(currentMove);
       winner = checkBoard();
 
       renderBoard();
@@ -120,7 +121,9 @@ function renderBoard() {
   }
   const moveElement = document.createElement("p");
   moveElement.id = "move-element";
-  moveElement.innerText = `Next Move: ${currentMove}`;
+  moveElement.innerText = winner
+    ? `Winner: ${winner}`
+    : `Next Move: ${currentMove}`;
   moveElement.classList.add("current-move");
   appElement.insertBefore(moveElement, document.getElementById("reset"));
 }
@@ -135,6 +138,7 @@ function init() {
       ["", "", ""],
     ];
     currentMove = "X";
+    winner = "";
     renderBoard();
   });
   renderBoard();
